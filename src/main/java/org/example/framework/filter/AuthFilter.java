@@ -1,4 +1,4 @@
-package org.example.filter;
+package org.example.framework.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -7,8 +7,7 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.example.attribute.RequestAttributes;
-import org.example.security.Authentication;
+import org.example.framework.security.Authentication;
 
 import java.io.IOException;
 import java.util.Map;
@@ -46,7 +45,7 @@ public class AuthFilter extends HttpFilter {
             return;
         }
         Authentication authentication = new Authentication(login);
-        req.setAttribute(RequestAttributes.AUTHEN_ATTR, authentication);
+        req.setAttribute("Authentication", authentication);
         chain.doFilter(req, res);
         }
 
